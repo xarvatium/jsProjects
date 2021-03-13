@@ -1,34 +1,62 @@
-var operator = prompt("Please enter the expression to be used (*, +, -, /, %, **) or type 'z' to exit: ")
+var readlineSync = require('readline-sync');
 
-switch (operator) {
-  case '+':
-    var firstNum = prompt("Please enter the first number: ")
-    var secondNum = prompt("Please enter the second number: ")
-    var sum = parseInt(firstNum) + parseInt(secondNum)
-    console.log("Your sum is: ",sum)
-    break;
-  case '-':
-    var firstNum = prompt("Please enter the first number: ")
-    var secondNum = prompt("Please enter the second number: ")
-    var difference = parseInt(firstNum) - parseInt(secondNum)
-    console.log("Your difference is: ",difference)
-    break;
-  case '*':
-    var firstNum = prompt("Please enter the first number: ")
-    var secondNum = prompt("Please enter the second number: ")
-    var product = parseInt(firstNum) * parseInt(secondNum)
-    console.log("Your product is: ",product)
-    break;
-  case '/':
-    var firstNum = prompt("Please enter the first number: ")
-    var secondNum = prompt("Please enter the second number: ")
-    var quotient = parseInt(firstNum) / parseInt(secondNum)
-    console.log("Your quotient is: ",quotient)
-    break;
-  case 'z':
-    console.log("Exiting...")
-    break;
-  default:
-    console.log("Please input an appropiate operator and try again!")
-    break;
+bool = true
+
+// While loop that loops it until 'z' is entered
+while (bool == true) {
+  // Get the operator from the user
+  var operator = readlineSync.question("Please enter the expression to be used (*, +, -, /, %, **) or type 'z' to exit: ")
+
+  // Switch statement that checks the operator
+  switch (operator) {
+    case '+': // Addition
+      var firstNum = readlineSync.question("What is your first number? ")
+      var secondNum = readlineSync.question("What is your second numder? ")
+      var sum = parseInt(firstNum) + parseInt(secondNum)
+      console.log(`The sum of ${firstNum} + ${secondNum} is:`,sum)
+      break;
+
+    case '-': // Subtraction
+      var firstNum = readlineSync.question("What is your first number? ")
+      var secondNum = readlineSync.question("What is your second numder? ")
+      var difference = parseInt(firstNum) - parseInt(secondNum)
+      console.log(`The difference of ${firstNum} - ${secondNum} is:`,difference)
+      break;
+
+    case '*': // Multiplication
+      var firstNum = readlineSync.question("What is your first number? ")
+      var secondNum = readlineSync.question("What is your second numder? ")
+      var product = parseInt(firstNum) * parseInt(secondNum)
+      console.log(`The product of ${firstNum} * ${secondNum} is:`,product)
+      break;
+    case '/': // Division
+      var firstNum = readlineSync.question("What is your first number? ")
+      var secondNum = readlineSync.question("What is your second numder? ")
+      var quotient = parseInt(firstNum) / parseInt(secondNum)
+      console.log(`The quotient of ${firstNum} / ${secondNum} is:`,quotient)
+      break;
+
+    case '%': // Modulo
+      var firstNum = readlineSync.question("What is your first number? ")
+      var secondNum = readlineSync.question("What is your second numder? ")
+      var modulo = parseInt(firstNum) % parseInt(secondNum)
+      console.log(`The remainder of ${firstNum} % ${secondNum} is:`,modulo)
+      break;
+
+    case '**': // Exponent
+      var firstNum = readlineSync.question("What is your first number? ")
+      var secondNum = readlineSync.question("What is your second numder? ")
+      var result = parseInt(firstNum) ** parseInt(secondNum)
+      console.log(`The result of ${firstNum} raised to the power of ${secondNum} is:`,result)
+      break;
+    
+    case 'z': // Exit
+      console.log("Exiting...")
+      bool = false
+      break;
+
+    default: // Invalid Operator
+      console.log("Please input an appropiate operator and try again!")
+      break;
+  }
 }
